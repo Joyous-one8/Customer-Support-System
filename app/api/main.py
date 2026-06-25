@@ -1,7 +1,16 @@
 from fastapi import FastAPI, Query
 from app.rag.engine import RAGEngine
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 rag_engine=RAGEngine()
 
